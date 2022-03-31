@@ -1,0 +1,26 @@
+logging:
+  level:
+    ROOT: INFO
+
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration,org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration
+#  datasource:
+#    type: com.zaxxer.hikari.HikariDataSource
+#    platform: postgres
+#    url: jdbc:postgresql://localhost:5432/<database_name>
+#    username: <database_user>
+#    password: <database_password>
+#    hikari:
+#      poolName: Hikari
+#      auto-commit: false
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create # https://docs.spring.io/spring-boot/docs/1.1.0.M1/reference/html/howto-database-initialization.html
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+  liquibase:
+    enabled: false
+    changelog: classpath:/liquibase/master-changelog.xml
